@@ -42,4 +42,4 @@ if __name__ =='__main__':
     parser.add_argument('--model_dir', type=str)
 
     args, _ = parser.parse_known_args()
-    main(model_dir=args.model_dir)
+    main(model_dir="/opt/ml/model")
