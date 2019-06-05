@@ -44,7 +44,7 @@ if __name__ =='__main__':
     parser = argparse.ArgumentParser()
 
     # input data and model directories
-    parser.add_argument('--model_dir', type=str)
+    parser.add_argument('--model_output_dir', type=str)
 
     args, _ = parser.parse_known_args()
-    main(model_dir="/opt/ml/model")
+    main(model_dir=args.model_output_dir)
