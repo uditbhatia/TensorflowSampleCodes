@@ -20,6 +20,12 @@ def predict(model, x_predict):
 
     return model.predict(x_predict)
 
+def save_model(model, output):
+
+    # create a TensorFlow SavedModel for deployment to a SageMaker endpoint with TensorFlow Serving
+    tf.contrib.saved_model.save_keras_model(model, args.model_dir)
+    print("Model successfully saved at: {}".format(output))
+    return
 
 
 def main(model_dir):
@@ -29,10 +35,9 @@ def main(model_dir):
 
     model = train(x_train=xs,
           y_train=ys)
+
     print("Prediction: {}".format(model.predict([10.0])))
-
-    model.save("{}/{}".format(model_dir,"model.h5"))
-
+    save_model(model, model_dir)
 
 if __name__ =='__main__':
 
