@@ -23,7 +23,7 @@ def predict(model, x_predict):
 def save_model(model, output):
 
     # create a TensorFlow SavedModel for deployment to a SageMaker endpoint with TensorFlow Serving
-    tf.contrib.saved_model.save_keras_model(model, args.model_dir)
+    tf.contrib.saved_model.save_keras_model(model, output)
     print("Model successfully saved at: {}".format(output))
     return
 
