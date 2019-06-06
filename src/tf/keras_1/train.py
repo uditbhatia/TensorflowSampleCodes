@@ -29,6 +29,8 @@ def save_model(model, output):
 
 
 def main(model_dir):
+    print("Model out dir: {}".format(model_dir))
+
 
     xs = np.array([-1.0, 0.0, 1.0, 2.0, 3.0, 4.0], dtype=float)
     ys = np.array([-3.0, -1.0, 1.0, 3.0, 5.0, 7.0], dtype=float)
@@ -44,7 +46,7 @@ if __name__ =='__main__':
     parser = argparse.ArgumentParser()
 
     # input data and model directories
-    parser.add_argument('--model_output_dir', type=str)
+    parser.add_argument('--model_output_dir', type=str,default=os.environ.get('SM_MODEL_DIR'))
 
     args, _ = parser.parse_known_args()
     main(model_dir=args.model_output_dir)
