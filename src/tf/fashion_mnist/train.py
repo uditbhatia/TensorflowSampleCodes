@@ -22,6 +22,15 @@ def build():
                   metrics=["accuracy"])
     return model
 
+
+def save_model(model, output="/opt/ml/model/"):
+
+    # create a TensorFlow SavedModel for deployment to a SageMaker endpoint with TensorFlow Serving
+    tf.contrib.saved_model.save_keras_model(model, output)
+    print("Model successfully saved at: {}".format(output))
+    return
+
+
 def main():
     (train_images, train_labels), (test_images, test_labels) = load_data()
 
@@ -32,6 +41,7 @@ def main():
     print("Evaluate model:")
     model.evaluate(test_images,test_labels)
 
+    save_model(model)
 
 if __name__ == "__main__":
     main()
