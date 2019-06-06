@@ -17,7 +17,7 @@ def build():
         keras.layers.Dense(128, activation=tf.nn.relu),
         keras.layers.Dense(10, activation=tf.nn.softmax)
     ])
-    model.compile(optimizer=tf.train.AdamOptimizer,
+    model.compile(optimizer=tf.train.AdamOptimizer(),
                   loss="sparse_categorical_crossentropy",
                   metrics=["accuracy"])
     return model
@@ -31,7 +31,7 @@ def main():
 
     print("Evaluate model:")
     model.evaluate(test_images,test_labels)
-    
+
 
 if __name__ == "__main__":
     main()
