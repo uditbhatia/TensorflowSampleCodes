@@ -23,7 +23,7 @@ def build():
     return model
 
 
-def save_model(model, output="/opt/ml/model/"):
+def save_model(model, output="/tmp/model/"):
 
     # create a TensorFlow SavedModel for deployment to a SageMaker endpoint with TensorFlow Serving
     tf.contrib.saved_model.save_keras_model(model, output)
